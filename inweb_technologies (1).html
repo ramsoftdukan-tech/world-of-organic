@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inweb Technologies | Web & Digital Solutions, UP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --blue: #1D4ED8;
+      --blue-mid: #2563EB;
+      --blue-light: #EFF6FF;
+      --blue-pale: #F8FAFF;
+      --accent: #0EA5E9;
+      --deep: #0F172A;
+      --mid: #1E3A5F;
+      --muted: #64748B;
+      --border: #E2E8F0;
+      --white: #FFFFFF;
+      --bg: #F8FAFC;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--deep); background: var(--white); }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-logo-wrap { display: flex; align-items: center; gap: 0.55rem; }
+    .nav-dot { width: 8px; height: 8px; background: var(--blue-mid); border-radius: 50%; }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--deep); }
+    .nav-logo span { color: var(--blue-mid); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 600; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .btn-nav {
+      background: var(--blue-mid); color: var(--white);
+      padding: 0.46rem 1.2rem; border-radius: 7px;
+      font-size: 0.83rem; font-weight: 700;
+      transition: background 0.2s;
+    }
+    .btn-nav:hover { background: var(--blue); }
+
+    /* HERO */
+    #hero {
+      background: var(--white);
+      padding: 5.5rem 6% 4.5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: var(--blue-light); border: 1px solid #BFDBFE;
+      color: var(--blue); font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
+    }
+    .hero-chip::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; }
+    #hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+      font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;
+      margin-bottom: 1.1rem; color: var(--deep);
+    }
+    #hero h1 em { font-style: italic; color: var(--blue-mid); }
+    #hero p { color: var(--muted); font-size: 0.97rem; line-height: 1.8; max-width: 440px; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue-mid); color: var(--white);
+      padding: 0.72rem 1.7rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--blue); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1.5px solid var(--border); color: var(--mid);
+      padding: 0.72rem 1.7rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 700;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
+
+    /* HERO RIGHT — gst card */
+    .hero-right { }
+    .gst-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; box-shadow: 0 8px 32px rgba(37,99,235,0.08);
+    }
+    .gst-card-head {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.4rem;
+      padding-bottom: 1.2rem; border-bottom: 1px solid var(--border);
+    }
+    .gst-dot { width: 10px; height: 10px; background: #22C55E; border-radius: 50%; flex-shrink: 0; }
+    .gst-label { font-size: 0.78rem; font-weight: 700; color: var(--muted); }
+    .gst-status { font-size: 0.78rem; font-weight: 700; color: #16A34A; }
+    .gst-rows { display: flex; flex-direction: column; gap: 0; }
+    .gst-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.75rem 0; border-bottom: 1px solid var(--border); gap: 1rem; }
+    .gst-row:last-child { border-bottom: none; }
+    .gst-k { font-size: 0.75rem; font-weight: 600; color: var(--muted); flex-shrink: 0; }
+    .gst-v { font-size: 0.84rem; font-weight: 700; color: var(--deep); text-align: right; }
+    .gst-v.mono { font-family: monospace; font-size: 0.88rem; color: var(--blue-mid); }
+    .gst-footer {
+      margin-top: 1.3rem; padding: 0.8rem; background: var(--blue-light);
+      border: 1px solid #BFDBFE; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 700; color: var(--blue); text-align: center;
+    }
+
+    /* METRICS BAR */
+    .metrics-bar {
+      background: var(--blue-mid);
+      display: flex; flex-wrap: wrap;
+    }
+    .metric {
+      flex: 1; min-width: 130px; padding: 1.3rem 1rem; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.2);
+    }
+    .metric:last-child { border-right: none; }
+    .metric-num { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); }
+    .metric-label { font-size: 0.73rem; color: rgba(255,255,255,0.7); font-weight: 600; }
+
+    /* SECTIONS */
+    section { padding: 4.5rem 6%; }
+    .section-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Fraunces', serif; font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.15; }
+    .section-sub { color: var(--muted); font-size: 0.9rem; max-width: 500px; margin-bottom: 2.5rem; line-height: 1.8; }
+
+    /* SERVICES */
+    #services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem; }
+    .service-card {
+      background: var(--white); border-radius: 14px; padding: 1.8rem 1.6rem;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 28px rgba(37,99,235,0.1); transform: translateY(-3px); }
+    .s-icon { width: 46px; height: 46px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem; border: 1px solid #BFDBFE; }
+    .service-card h3 { font-size: 0.97rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .service-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+    /* ABOUT */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-left p { color: var(--muted); font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.5rem; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .check-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; font-weight: 600; }
+    .check-list li::before { content: '✓'; color: var(--blue-mid); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .biz-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.06);
+    }
+    .biz-card-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+    .biz-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.75rem 0; border-bottom: 1px solid var(--border); gap: 1rem; }
+    .biz-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .biz-key { font-size: 0.75rem; font-weight: 600; color: var(--muted); flex-shrink: 0; }
+    .biz-val { font-size: 0.84rem; font-weight: 700; color: var(--deep); text-align: right; }
+    .biz-badge {
+      display: inline-block; background: var(--blue-light); color: var(--blue);
+      border: 1px solid #BFDBFE; border-radius: 4px;
+      padding: 0.1rem 0.55rem; font-size: 0.76rem; font-weight: 700;
+    }
+    .gst-seal {
+      margin-top: 1.3rem; padding: 0.8rem; background: var(--blue-light);
+      border: 1px solid #BFDBFE; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 700; color: var(--blue); text-align: center;
+    }
+    .active-badge { color: #16A34A; font-weight: 800; }
+
+    /* CONTACT */
+    #contact { background: var(--blue-pale); border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.3rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .c-icon { width: 46px; height: 46px; background: var(--white); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(37,99,235,0.06); }
+    .c-key { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+    .c-val { font-size: 0.92rem; font-weight: 700; color: var(--deep); line-height: 1.6; }
+    .reg-table-box {
+      background: var(--white); border-radius: 14px; padding: 1.8rem;
+      border: 1px solid var(--border);
+    }
+    .reg-table-box h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--blue); }
+    .reg-row { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; gap: 1rem; }
+    .reg-row:last-child { border-bottom: none; }
+    .reg-k { color: var(--muted); font-weight: 600; }
+    .reg-v { font-weight: 700; color: var(--deep); }
+    .reg-v.ok { color: #16A34A; }
+
+    footer { background: var(--deep); color: #64748B; padding: 2.5rem 6% 1.3rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .footer-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .footer-logo span { color: #60A5FA; }
+    .footer-brand p { font-size: 0.8rem; line-height: 1.7; max-width: 240px; }
+    .footer-col h5 { font-size: 0.67rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a { font-size: 0.8rem; color: #64748B; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #60A5FA; }
+    .footer-bottom { border-top: 1px solid #1E293B; padding-top: 1.2rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom p { font-size: 0.76rem; color: #ffffff; font-weight: 600; text-align: center; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      #hero, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .metrics-bar { flex-direction: column; }
+      .metric { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo-wrap">
+      <div class="nav-dot"></div>
+      <div class="nav-logo">Inweb<span>Technologies</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn-nav">Get in Touch</a>
+  </nav>
+
+  <section id="hero">
+    <div>
+      <div class="hero-chip">Digital Solutions Provider</div>
+      <h1>Building Your <em>Digital Presence</em> with Purpose</h1>
+      <p>Inweb Technologies is a GST-registered web and digital solutions company based in Vasundhra, Uttar Pradesh — turning ideas into powerful online experiences.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#about" class="btn-outline">About Us</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="gst-card">
+        <div class="gst-card-head">
+          <div class="gst-dot"></div>
+          <div>
+            <div class="gst-label">GST Registration</div>
+            <div class="gst-status">✓ Active & Verified</div>
+          </div>
+        </div>
+        <div class="gst-rows">
+          <div class="gst-row"><span class="gst-k">Trade Name</span><span class="gst-v">Inweb Technologies</span></div>
+          <div class="gst-row"><span class="gst-k">GSTIN</span><span class="gst-v mono">09AVAPM6349K1Z5</span></div>
+          <div class="gst-row"><span class="gst-k">Type</span><span class="gst-v">Regular</span></div>
+          <div class="gst-row"><span class="gst-k">GST Since</span><span class="gst-v">01 July 2017</span></div>
+          <div class="gst-row"><span class="gst-k">Constitution</span><span class="gst-v">Proprietorship</span></div>
+          <div class="gst-row"><span class="gst-k">State</span><span class="gst-v">Uttar Pradesh</span></div>
+        </div>
+        <div class="gst-footer">🏛️ GST Registered · Govt. of India</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="metrics-bar">
+    <div class="metric"><div class="metric-num">2017</div><div class="metric-label">Founded</div></div>
+    <div class="metric"><div class="metric-num">GST</div><div class="metric-label">Registered</div></div>
+    <div class="metric"><div class="metric-num">UP</div><div class="metric-label">Uttar Pradesh</div></div>
+    <div class="metric"><div class="metric-num">Regular</div><div class="metric-label">GST Type</div></div>
+  </div>
+
+  <section id="services">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-sub">Comprehensive digital solutions for businesses of all sizes — crafted with clarity and purpose.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="s-icon">🌐</div>
+        <h3>Web Development</h3>
+        <p>Custom websites and web applications built with modern technologies, optimized for speed and user experience.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-icon">🎨</div>
+        <h3>UI/UX Design</h3>
+        <p>Intuitive, visually compelling interface designs that engage users and drive measurable business results.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-icon">📱</div>
+        <h3>Digital Solutions</h3>
+        <p>End-to-end digital transformation services to help businesses grow and thrive online.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-icon">🔧</div>
+        <h3>Technical Support</h3>
+        <p>Ongoing maintenance, updates, and technical assistance to keep your digital products running smoothly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">GST-Registered Tech Firm in Uttar Pradesh</h2>
+        <p>Inweb Technologies is a GST-registered proprietorship firm founded in July 2017, based in Vasundhra, Ghaziabad, Uttar Pradesh. We provide modern web and digital solutions with a commitment to quality, transparency, and client satisfaction.</p>
+        <ul class="check-list">
+          <li>GST registered since July 1, 2017 — fully compliant</li>
+          <li>Proprietorship — direct accountability to every client</li>
+          <li>Located in Vasundhra, Sector 14A, Ghaziabad, UP</li>
+          <li>Regular GST registration with Govt. of India</li>
+          <li>Digitally signed GST certificate — verified authenticity</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="biz-card">
+          <div class="biz-card-title">Business Details</div>
+          <div class="biz-row"><div class="biz-key">Legal Name</div><div class="biz-val">Raj Mishra</div></div>
+          <div class="biz-row"><div class="biz-key">Trade Name</div><div class="biz-val">Inweb Technologies</div></div>
+          <div class="biz-row"><div class="biz-key">GSTIN</div><div class="biz-val"><span class="biz-badge">09AVAPM6349K1Z5</span></div></div>
+          <div class="biz-row"><div class="biz-key">Reg. Type</div><div class="biz-val">Regular</div></div>
+          <div class="biz-row"><div class="biz-key">GST Since</div><div class="biz-val">01 July 2017</div></div>
+          <div class="biz-row"><div class="biz-key">Constitution</div><div class="biz-val">Proprietorship</div></div>
+          <div class="biz-row"><div class="biz-key">Address</div><div class="biz-val">2nd Floor, 680, Sector 14A,<br>Vasundhra, UP — 201012</div></div>
+          <div class="biz-row"><div class="biz-key">Status</div><div class="biz-val active-badge">✓ Active</div></div>
+          <div class="gst-seal">🏛️ GST Registered · Govt. of India</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-sub">Have a project in mind? We're here to help you build something great.</p>
+    <div class="contact-grid">
+      <div class="contact-items">
+        <div class="contact-item reveal">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-key">Office Address</div>
+            <div class="c-val">2nd Floor, 680, Sector 14A,<br>Vasundhra, Ghaziabad,<br>Uttar Pradesh — 201012</div>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="c-icon">🏛️</div>
+          <div>
+            <div class="c-key">GSTIN</div>
+            <div class="c-val">09AVAPM6349K1Z5</div>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="c-icon">⚖️</div>
+          <div>
+            <div class="c-key">State Jurisdiction</div>
+            <div class="c-val">Uttar Pradesh (State Code 09)</div>
+          </div>
+        </div>
+      </div>
+      <div class="reg-table-box reveal">
+        <h3>Registration Details</h3>
+        <div class="reg-row"><span class="reg-k">GSTIN</span><span class="reg-v">09AVAPM6349K1Z5</span></div>
+        <div class="reg-row"><span class="reg-k">Type</span><span class="reg-v">Regular</span></div>
+        <div class="reg-row"><span class="reg-k">Date of Liability</span><span class="reg-v">01/07/2017</span></div>
+        <div class="reg-row"><span class="reg-k">Certificate Issued</span><span class="reg-v">28/07/2018</span></div>
+        <div class="reg-row"><span class="reg-k">Status</span><span class="reg-v ok">✓ Active</span></div>
+        <div class="reg-row"><span class="reg-k">Validity</span><span class="reg-v">01/07/2017 — Ongoing</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Inweb<span>Technologies</span></div>
+        <p>GST-registered web & digital solutions firm based in Vasundhra, Uttar Pradesh. Building digital presence since 2017.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">GSTIN: 09AVAPM6349K1Z5</a></li>
+          <li><a href="#">Vasundhra, Ghaziabad, UP</a></li>
+          <li><a href="#">Proprietorship Firm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 World of Organic Powered by Inweb Technologies. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 90); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(r => io.observe(r));
+  </script>
+</body>
+</html>
